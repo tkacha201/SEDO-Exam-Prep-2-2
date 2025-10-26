@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    triggers {
+        // Poll GitHub every 5 minutes for new commits
+        pollSCM('H/5 * * * *')
+    }
+
     stages {
         stage('Build .NET Project') {
             when { branch 'main' }
